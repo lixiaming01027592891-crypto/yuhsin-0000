@@ -14,6 +14,7 @@ export const posts: Record<string, Post> = {
     date: '2024-03-15',
     category: '搬家知識',
     readTime: '5 分鐘',
+    image: '/images/blog-packing.jpg',
     excerpt: '搬家總是讓人頭痛嗎？掌握這10個打包技巧，讓您的搬家過程更輕鬆順利',
     content: `
       <p>搬家總是讓人感到壓力山大嗎？別擔心！只要掌握正確的打包技巧，搬家也可以變得輕鬆有效率。以下是煜欣搬家多年經驗總結出的10個實用打包技巧：</p>
@@ -44,6 +45,7 @@ export const posts: Record<string, Post> = {
     date: '2024-03-10',
     category: '費用指南',
     readTime: '6 分鐘',
+    image: '/images/blog-cost.jpg',
     excerpt: '搬家費用受多種因素影響，包括距離、樓層、物品數量等',
     content: `
       <p>很多人在搬家前最關心的問題就是「搬家要多少錢？」其實搬家費用受多種因素影響，本文為您詳細解析搬家費用的計算方式。</p>
