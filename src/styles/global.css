@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; font-family: 'Noto Sans TC', system-ui, sans-serif; }
+  body { @apply text-gray-700 bg-white antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-bold text-primary-800; }
+}
+
+@layer components {
+  .btn-primary { @apply inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-semibold rounded-full transition-all duration-300 hover:bg-primary-600 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0; }
+  .btn-accent { @apply inline-flex items-center justify-center px-8 py-3 bg-accent text-white font-semibold rounded-full transition-all duration-300 hover:bg-accent-600 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0; }
+  .btn-outline { @apply inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition-all duration-300 hover:bg-white hover:text-primary; }
+  .section-padding { @apply px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24; }
+  .card-hover { @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2; }
+  .page-banner { @apply relative bg-gradient-to-br from-primary to-primary-500 text-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden; }
+  .service-icon-circle { @apply w-20 h-20 rounded-full flex items-center justify-center bg-primary-50 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white; }
+}
+
+@layer utilities {
+  .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+  .delay-100 { transition-delay: 0.1s; }
+  .delay-200 { transition-delay: 0.2s; }
+  .delay-300 { transition-delay: 0.3s; }
+  .delay-400 { transition-delay: 0.4s; }
+  .delay-500 { transition-delay: 0.5s; }
+}
+
+/* Prose styles for blog articles */
+.prose {
+  @apply text-gray-700;
+}
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+.prose h2 {
+  @apply text-2xl font-bold text-primary mt-10 mb-4;
+}
+.prose h3 {
+  @apply text-xl font-bold text-primary mt-8 mb-3;
+}
+.prose ul {
+  @apply my-4 pl-6 list-disc space-y-2;
+}
+.prose ul li {
+  @apply text-gray-600;
+}
+.prose strong {
+  @apply font-bold text-primary-800;
+}

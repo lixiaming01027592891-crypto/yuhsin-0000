@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  { name: '日式搬家', desc: '提供免動手打包服務，全程為您打包、搬運，讓您輕鬆無憂完成搬家', icon: 'japanese' },
+  { name: '全省搬運', desc: '不論台灣哪個角落，都能為您安排專業的搬運服務', icon: 'island' },
+  { name: '廢棄物處理', desc: '搬家後的廢棄物妥善處理，讓您無需為此煩惱', icon: 'recycle' },
+  { name: '寄倉服務', desc: '物品需要暫時寄存，提供安全可靠的寄倉服務', icon: 'warehouse' },
+  { name: '吊車搬運', desc: '針對需要特殊吊運的大型物品，備有專業吊車設備', icon: 'crane' },
+  { name: '自助搬家', desc: '靈活的自助搬家選項，適合親自打包但需要專業搬運', icon: 'self' },
+  { name: '大/小型搬家', desc: '各種規模的搬家需求都能滿足，從套房到豪宅', icon: 'house' },
+  { name: '工廠遷移', desc: '大型工廠設備專業遷移，安全高效完成任務', icon: 'factory' },
+  { name: '公司搬遷', desc: '企業辦公室搬遷，快速高效，減少營運中斷', icon: 'office' },
+  { name: '人力派遣', desc: '提供專業搬運人力支援，按需求彈性調度', icon: 'people' },
+  { name: '拆裝潢服務', desc: '裝潢拆除清理服務，為您處理裝修後的整理工作', icon: 'hammer' },
+  { name: '傢俱系統規劃', desc: '專業家具配置規劃，讓空間利用更合理', icon: 'plan' },
+];
+---
+
+<Layout title="服務項目" description="煜欣搬家12項專業服務：日式搬家、全省搬運、公司搬遷、廢棄物處理、吊車搬運、寄倉服務、拆裝潢等">
+  <section class="page-banner">
+    <div class="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full translate-y-1/2 -translate-x-1/4"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-sm text-primary-200 mb-2">
+        <a href="/" class="hover:text-accent transition-colors">首頁</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">服務項目</span>
+      </div>
+      <h1 class="text-3xl lg:text-5xl font-bold text-white">服務項目</h1>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 80" fill="none" class="w-full">
+        <path d="M0 80V40C240 80 480 0 720 20C960 40 1200 0 1440 40V80H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-accent/10 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-4">12 SERVICES</span>
+        <h2 class="text-3xl font-bold text-primary mb-4">我們提供專業的服務</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">致力於滿足客戶的需求，並為您創造最佳的搬家體驗</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {services.map((s, i) => (
+          <div class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover animate-on-scroll">
+            <div class="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mb-4 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+              {s.icon === 'japanese' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v6"/><path d="M9 15h6"/>
+                </svg>
+              )}
+              {s.icon === 'island' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+              )}
+              {s.icon === 'recycle' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+              )}
+              {s.icon === 'warehouse' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-6h6v6"/>
+                </svg>
+              )}
+              {s.icon === 'crane' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 20h16M6 20V10l6-4 6 4v10M12 6v14"/><circle cx="12" cy="6" r="1.5"/>
+                </svg>
+              )}
+              {s.icon === 'self' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              )}
+              {s.icon === 'house' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+              )}
+              {s.icon === 'factory' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              )}
+              {s.icon === 'office' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              )}
+              {s.icon === 'people' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              )}
+              {s.icon === 'hammer' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                </svg>
+              )}
+              {s.icon === 'plan' && (
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                </svg>
+              )}
+            </div>
+            <h3 class="text-lg font-bold text-primary mb-2">{s.name}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-surface py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-gray-100 animate-on-scroll">
+        <h2 class="text-2xl lg:text-3xl font-bold text-primary mb-4">需要其他服務？</h2>
+        <p class="text-gray-500 mb-6">歡迎聯繫我們為您量身規劃最適合的搬運方案</p>
+        <a href="/contact.html" class="btn-primary">聯絡我們</a>
+      </div>
+    </div>
+  </section>
+</Layout>
