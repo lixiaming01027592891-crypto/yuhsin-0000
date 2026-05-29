@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 
 const posts = [
-  { slug: 'moving-tips-2024', title: '2024搬家必看！10個省時省力的打包技巧', date: '2024-03-15', category: '搬家知識', excerpt: '搬家總是讓人頭痛嗎？掌握這10個打包技巧，讓您的搬家過程更輕鬆順利...' },
-  { slug: 'moving-cost-guide', title: '搬家費用怎麼算？完整價格指南一次看懂', date: '2024-03-10', category: '費用指南', excerpt: '搬家費用受多種因素影響，包括距離、樓層、物品數量等。本文為您詳細解析...' },
+  { slug: 'moving-tips-2024', title: '2024搬家必看！10個省時省力的打包技巧', date: '2024-03-15', category: '搬家知識', excerpt: '搬家總是讓人頭痛嗎？掌握這10個打包技巧，讓您的搬家過程更輕鬆順利...', image: '/images/blog-packing.jpg' },
+  { slug: 'moving-cost-guide', title: '搬家費用怎麼算？完整價格指南一次看懂', date: '2024-03-10', category: '費用指南', excerpt: '搬家費用受多種因素影響，包括距離、樓層、物品數量等。本文為您詳細解析...', image: '/images/blog-cost.jpg' },
   { slug: 'how-to-choose-mover', title: '如何選擇優質搬家公司？5個關鍵指標', date: '2024-03-05', category: '選擇指南', excerpt: '市面上的搬家公司琳瑯滿目，如何挑選值得信賴的搬家公司？這5個指標幫您判斷...' },
   { slug: 'warehouse-storage-guide', title: '寄倉服務全攻略：什麼情況需要暫存家具？', date: '2024-02-28', category: '寄倉服務', excerpt: '裝修期間家具沒地方放？搬家時間無法銜接？寄倉服務是您的最佳選擇...' },
   { slug: 'fragile-items-packing', title: '易碎品打包秘訣：碗盤、電器、藝術品保護法', date: '2024-02-20', category: '打包技巧', excerpt: '易碎物品最讓人擔心，學會正確的包裝方法，讓您的寶貝物品安全抵達新家...' },
@@ -55,21 +55,18 @@ const posts = [
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {posts.map((post, i) => (
           <a href={`/blog/${post.slug}.html`} class={`group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-on-scroll delay-${(i % 3 + 1) * 100}`}>
-            <div class="h-48 bg-gradient-to-br from-primary to-primary-400 flex items-center justify-center relative overflow-hidden">
-              <!-- 手繪風格 SVG 插畫 -->
-              <svg viewBox="0 0 120 120" class="w-24 h-24 text-white/30" fill="none">
-                <circle cx="60" cy="60" r="45" stroke="white" stroke-width="1.5" opacity="0.4"/>
-                <rect x="35" y="40" width="50" height="40" rx="5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M45 55h30M45 65h20" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-                <circle cx="75" cy="35" r="8" fill="white" fill-opacity="0.2"/>
-              </svg>
+            <div class="h-48 flex items-center justify-center relative overflow-hidden">
+              {post.image ? (
+                <>
+                  <img src={post.image} alt={post.title} class="w-full h-full object-cover" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                </>
+              ) : (
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-400" />
+              )}
               <div class="absolute top-4 left-4">
                 <span class="bg-accent text-white text-xs px-3 py-1 rounded-full font-medium">{post.category}</span>
               </div>
-              <!-- 裝飾點 -->
-              <svg class="absolute bottom-4 right-4 w-8 h-8 text-white/10" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="6" stroke="white" stroke-width="2" stroke-dasharray="3 2"/>
-              </svg>
             </div>
             <div class="p-6">
               <div class="text-sm text-gray-400 mb-2">{post.date}</div>
