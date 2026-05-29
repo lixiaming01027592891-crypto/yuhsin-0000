@@ -4,6 +4,7 @@ export interface Post {
   category: string;
   readTime: string;
   excerpt: string;
+  image?: string;
   content: string;
 }
 
@@ -66,6 +67,7 @@ export const posts: Record<string, Post> = {
     date: '2024-03-05',
     category: '選擇指南',
     readTime: '4 分鐘',
+    image: '/images/blog-choose-mover.jpg',
     excerpt: '市面上的搬家公司琳瑯滿目，如何挑選值得信赖的搬家公司',
     content: `
       <p>市面上搬家公司眾多，如何挑選值得信赖的搬家公司？以下5個關鍵指標幫您做出明智選擇：</p>
@@ -87,6 +89,7 @@ export const posts: Record<string, Post> = {
     date: '2024-02-28',
     category: '寄倉服務',
     readTime: '4 分鐘',
+    image: '/images/blog-storage.jpg',
     excerpt: '裝修期間家具沒地方放？搬家時間無法銜接？寄倉服務是您的最佳選擇',
     content: `
       <p>裝修期間家具沒地方放？搬家時間無法銜接？這時候寄倉服務就是您的最佳選擇。本文介紹寄倉服務的適用情境與注意事項。</p>
@@ -110,6 +113,7 @@ export const posts: Record<string, Post> = {
     date: '2024-02-20',
     category: '打包技巧',
     readTime: '5 分鐘',
+    image: '/images/blog-fragile.jpg',
     excerpt: '易碎物品最讓人擔心，學會正確的包裝方法，讓您的寶貝物品安全抵達新家',
     content: `
       <p>搬家時最讓人擔心的就是易碎物品的安全。碗盤、玻璃杯、電器、藝術品等，一旦破損難以復原。本文分享專業的易碎品打包技巧。</p>
@@ -130,6 +134,7 @@ export const posts: Record<string, Post> = {
     date: '2024-02-15',
     category: '公司搬遷',
     readTime: '7 分鐘',
+    image: '/images/blog-office.jpg',
     excerpt: '公司搬遷涉及大量設備和文件，需要縝密規劃，本文分享企業搬遷的最佳實務',
     content: `
       <p>公司搬遷比家庭搬家更為複雜，涉及大量設備、文件和員工協調。一份完善的搬遷計劃能讓整個過程高效順利。</p>
