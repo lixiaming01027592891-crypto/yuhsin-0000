@@ -1,14 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
-const posts = [
-  { slug: 'moving-tips-2024', title: '2024搬家必看！10個省時省力的打包技巧', date: '2024-03-15', category: '搬家知識', excerpt: '搬家總是讓人頭痛嗎？掌握這10個打包技巧，讓您的搬家過程更輕鬆順利...', image: '/images/blog-packing.jpg' },
-  { slug: 'moving-cost-guide', title: '搬家費用怎麼算？完整價格指南一次看懂', date: '2024-03-10', category: '費用指南', excerpt: '搬家費用受多種因素影響，包括距離、樓層、物品數量等。本文為您詳細解析...', image: '/images/blog-cost.jpg' },
-  { slug: 'how-to-choose-mover', title: '如何選擇優質搬家公司？5個關鍵指標', date: '2024-03-05', category: '選擇指南', excerpt: '市面上的搬家公司琳瑯滿目，如何挑選值得信賴的搬家公司？這5個指標幫您判斷...' },
-  { slug: 'warehouse-storage-guide', title: '寄倉服務全攻略：什麼情況需要暫存家具？', date: '2024-02-28', category: '寄倉服務', excerpt: '裝修期間家具沒地方放？搬家時間無法銜接？寄倉服務是您的最佳選擇...' },
-  { slug: 'fragile-items-packing', title: '易碎品打包秘訣：碗盤、電器、藝術品保護法', date: '2024-02-20', category: '打包技巧', excerpt: '易碎物品最讓人擔心，學會正確的包裝方法，讓您的寶貝物品安全抵達新家...' },
-  { slug: 'office-moving-guide', title: '企業搬遷指南：如何高效完成公司搬家', date: '2024-02-15', category: '公司搬遷', excerpt: '公司搬遷涉及大量設備和文件，需要縝密規劃。本文分享企業搬遷的最佳實務...' },
-];
+const allPosts = await getCollection('blog');
+
+const posts = allPosts
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .map(post => ({
+    slug: post.slug,
+    title: post.data.title,
+    date: post.data.pubDate.toISOString().split('T')[0],
+    category: post.data.category,
+    excerpt: post.data.description,
+  }));
+
+const categoryMap: Record<string, string> = {
+  '搬家知識': '搬家知識',
+  '費用指南': '費用指南',
+  '選擇指南': '選擇指南',
+  '寄倉服務': '寄倉服務',
+  '打包技巧': '打包技巧',
+  '公司搬遷': '公司搬遷',
+  'move': '搬家服務',
+  'home-moving': '住家搬家',
+  'office-moving': '公司搬遷',
+  'special-moving': '專項服務',
+  'moving-guide': '搬家指南',
+  'recommend': '推薦',
+  'qna': '問答',
+};
+
+const allCategories = ['全部', ...new Set(posts.map(p => categoryMap[p.category] || p.category))];
 ---
 
 <Layout title="部落格" description="煜欣搬家部落格，提供搬家知識、實用技巧、行業資訊，讓您的搬家過程更輕鬆順利。">
@@ -16,7 +38,6 @@ const posts = [
   <section class="page-banner">
     <div class="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
     <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/3 -translate-x-1/4"></div>
-    <!-- 手繪風格裝飾線條 -->
     <svg class="absolute top-10 left-10 w-16 h-16 text-white/10" viewBox="0 0 64 64" fill="none">
       <path d="M10 32c0-12 10-22 22-22s22 10 22 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
       <circle cx="20" cy="20" r="3" fill="white" fill-opacity="0.3"/>
@@ -45,7 +66,7 @@ const posts = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 分類標籤 -->
       <div class="flex flex-wrap justify-center gap-3 mb-12">
-        {['全部', '搬家知識', '費用指南', '選擇指南', '寄倉服務', '打包技巧', '公司搬遷'].map((cat, idx) => (
+        {allCategories.map((cat, idx) => (
           <button class={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${idx === 0 ? 'bg-primary text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200 hover:border-primary hover:text-primary'}`}>
             {cat}
           </button>
@@ -54,19 +75,17 @@ const posts = [
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {posts.map((post, i) => (
-          <a href={`/blog/${post.slug}`} class={`group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-on-scroll delay-${(i % 3 + 1) * 100}`}>
-            <div class="h-48 flex items-center justify-center relative overflow-hidden">
-              {post.image ? (
-                <>
-                  <img src={post.image} alt={post.title} class="w-full h-full object-cover" loading="lazy" />
-                  <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
-                </>
-              ) : (
-                <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-400" />
-              )}
+          <a href={`/blog/${post.slug}/`} class={`group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-on-scroll delay-${(i % 3 + 1) * 100}`}>
+            <div class="h-48 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-primary to-primary-400">
               <div class="absolute top-4 left-4">
                 <span class="bg-accent text-white text-xs px-3 py-1 rounded-full font-medium">{post.category}</span>
               </div>
+              <svg class="w-20 h-20 text-white/20" viewBox="0 0 80 80" fill="none">
+                <rect x="15" y="25" width="35" height="40" rx="4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M25 40h20M25 50h15" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <circle cx="55" cy="50" r="12" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
+                <path d="M50 50l4 4 8-8" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
             <div class="p-6">
               <div class="text-sm text-gray-400 mb-2">{post.date}</div>
@@ -81,22 +100,6 @@ const posts = [
             </div>
           </a>
         ))}
-      </div>
-
-      <!-- Pagination -->
-      <div class="flex justify-center items-center gap-2 mt-12">
-        <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-colors" disabled>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
-        <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-sm font-medium">1</button>
-        <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-sm text-gray-600 hover:border-primary hover:text-primary transition-colors">2</button>
-        <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary hover:text-primary transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
       </div>
     </div>
   </section>
@@ -119,9 +122,7 @@ const posts = [
           </svg>
           立即預約 0983-743969
         </a>
-        <a href="/contact" class="btn-outline">
-          聯絡我們
-        </a>
+        <a href="/contact/" class="btn-outline">聯絡我們</a>
       </div>
     </div>
   </section>
