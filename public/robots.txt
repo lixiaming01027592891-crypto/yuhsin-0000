@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yuhsinmoving.com/sitemap.xml
+Sitemap: https://yuhsinmoving.com/sitemap-index.xml

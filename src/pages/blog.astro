@@ -54,7 +54,7 @@ const posts = [
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {posts.map((post, i) => (
-          <a href={`/blog/${post.slug}.html`} class={`group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-on-scroll delay-${(i % 3 + 1) * 100}`}>
+          <a href={`/blog/${post.slug}`} class={`group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-on-scroll delay-${(i % 3 + 1) * 100}`}>
             <div class="h-48 flex items-center justify-center relative overflow-hidden">
               {post.image ? (
                 <>
@@ -119,7 +119,7 @@ const posts = [
           </svg>
           立即預約 0983-743969
         </a>
-        <a href="/contact.html" class="btn-outline">
+        <a href="/contact" class="btn-outline">
           聯絡我們
         </a>
       </div>

@@ -1,0 +1,13 @@
+# 301 redirects: 舊 .html 網址 → 新乾淨網址（避免改版後 SEO 流失）
+# 適用 Netlify / Cloudflare Pages 等支援 _redirects 的靜態主機
+/about.html                              /about/                              301
+/services.html                           /services/                           301
+/process.html                            /process/                            301
+/contact.html                            /contact/                            301
+/blog.html                               /blog/                               301
+/blog/moving-tips-2024.html              /blog/moving-tips-2024/              301
+/blog/moving-cost-guide.html             /blog/moving-cost-guide/             301
+/blog/how-to-choose-mover.html           /blog/how-to-choose-mover/           301
+/blog/warehouse-storage-guide.html       /blog/warehouse-storage-guide/       301
+/blog/fragile-items-packing.html         /blog/fragile-items-packing/         301
+/blog/office-moving-guide.html           /blog/office-moving-guide/           301
