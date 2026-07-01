@@ -12,6 +12,7 @@ const posts = allPosts
     date: post.data.pubDate.toISOString().split('T')[0],
     category: post.data.category,
     excerpt: post.data.description,
+    cover: `/images/blog/${post.slug}-1.webp`,
   }));
 
 const categoryMap: Record<string, string> = {
@@ -77,15 +78,18 @@ const allCategories = ['全部', ...new Set(posts.map(p => categoryMap[p.categor
         {posts.map((post, i) => (
           <a href={`/blog/${post.slug}/`} class={`group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover animate-on-scroll delay-${(i % 3 + 1) * 100}`}>
             <div class="h-48 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-primary to-primary-400">
-              <div class="absolute top-4 left-4">
+              <div class="absolute top-4 left-4 z-10">
                 <span class="bg-accent text-white text-xs px-3 py-1 rounded-full font-medium">{post.category}</span>
               </div>
-              <svg class="w-20 h-20 text-white/20" viewBox="0 0 80 80" fill="none">
-                <rect x="15" y="25" width="35" height="40" rx="4" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                <path d="M25 40h20M25 50h15" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-                <circle cx="55" cy="50" r="12" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
-                <path d="M50 50l4 4 8-8" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <img src={post.cover} alt={post.title} loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.querySelector('.fallback-svg').style.display='flex';" />
+              <div class="fallback-svg absolute inset-0 flex items-center justify-center" style="display:none;">
+                <svg class="w-20 h-20 text-white/20" viewBox="0 0 80 80" fill="none">
+                  <rect x="15" y="25" width="35" height="40" rx="4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M25 40h20M25 50h15" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                  <circle cx="55" cy="50" r="12" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
+                  <path d="M50 50l4 4 8-8" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="p-6">
               <div class="text-sm text-gray-400 mb-2">{post.date}</div>
